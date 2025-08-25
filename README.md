@@ -10,9 +10,7 @@
 
 ## ✨ Overview
 
-**Cosmo** is a fully modular, class-based wrapper
-over [Astroquery](https://astroquery.readthedocs.io/), providing a clean, unified interface to major
-astronomical data services such as:
+**Cosmo** is a unified interface to major astronomical data services such as:
 
 - SIMBAD
 - VizieR
@@ -23,8 +21,6 @@ astronomical data services such as:
 - MAST
 - CDS XMatch
 
-Each service is encapsulated in a dedicated class (e.g., `SimbadService`, `VizierService`) with
-complete documentation, guard clauses, and centralized error handling via your custom `boogr.py`.
 
 ---
 
@@ -44,7 +40,7 @@ pip install astroquery astropy
 
 ## 🧱 Project Structure
 
-```plaintext
+```
 cosmo.py                  # Main library (all services)
 boogr.py                  # Error + ErrorDialog definitions
 Python Style Example.py   # Enforced documentation and formatting standard
@@ -65,13 +61,14 @@ Python Style Example.py   # Enforced documentation and formatting standard
 | `MastService`      | Searches the MAST archive and downloads mission products      |
 | `XMatchService`    | Crossmatches two sky catalogs using CDS XMatch                |
 
-All inherit from a shared base class: `Sol`.
+
 
 ---
 
 ## 🔍 Example Usage
 
-```python
+```
+python
 from cosmo import SimbadService, VizierService
 from astropy import units as u
 from astropy.coordinates import SkyCoord
@@ -85,29 +82,12 @@ coord = SkyCoord.from_name("M31")
 vizier_result = vizier.query_region(catalog, coord, radius=5 * u.arcmin)
 ```
 
----
 
-## 📄 Documentation Style
 
-All methods and classes follow a strict format:
-
-```
-Purpose:
-    What this method/class is intended for.
-
-Parameters:
-    Each parameter with type and description.
-
-Returns:
-    The return value or type.
-```
-
-Wrapped at 100 characters. Guard clauses (via `throw_if`) and centralized exception handling (
-`boogr.Error`) are used throughout.
 
 ---
 
-## 🧪 Testing Ideas
+## 🧪 Testing
 
 - Add unit tests for each service’s key method using `pytest` and `astropy`’s offline mode.
 - Validate error handling via mocked service failures.
