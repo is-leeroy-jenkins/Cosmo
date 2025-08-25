@@ -114,7 +114,7 @@ class SimbadService( ):
 			error = ErrorDialog( exception )
 			error.show( )
 
-	def resolve_many( self, names: Iterable[ str ],
+	def query_objects( self, names: Iterable[ str ],
 	                  extra_fields: Optional[ Iterable[ str ] ] = None ) -> Optional[ Table ]:
 		"""
 
@@ -205,7 +205,8 @@ class SimbadService( ):
 		return 'SimbadService: SIMBAD query client wrapper'
 
 	def __dir__( self ) -> list[ str ]:
-		return [ 'query_object', 'resolve_many'  ]
+		return [ 'query_object', 'query_region',
+		         'query_objects', 'query_catalog',  ]
 
 
 
