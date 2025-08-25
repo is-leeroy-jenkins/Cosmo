@@ -26,27 +26,25 @@
 
 ## ⚙️ Installation
 
-Cosmo depends on `astroquery`, `astropy`, and your local `boogr.py`.
+Cosmo runs on `astroquery`, and `astropy`
 
 Install dependencies:
 
-```bash
-pip install astroquery astropy
+```
+> pip install astroquery astropy
 ```
 
-> Place `boogr.py` in the same directory or make it importable via your `PYTHONPATH`.
 
----
 
 ## 🧱 Project Structure
 
 ```
-cosmo.py                  # Main library (all services)
-boogr.py                  # Error + ErrorDialog definitions
-Python Style Example.py   # Enforced documentation and formatting standard
+    cosmo.py                  # Main library (all services)
+    boogr.py                  # Error + ErrorDialog definitions
+    Python Style Example.py   # Enforced documentation and formatting standard
 ```
 
----
+
 
 ## 🧩 Included Services
 
@@ -63,29 +61,27 @@ Python Style Example.py   # Enforced documentation and formatting standard
 
 
 
----
+
 
 ## 🔍 Example Usage
 
 ```
-python
-from cosmo import SimbadService, VizierService
-from astropy import units as u
-from astropy.coordinates import SkyCoord
 
-simbad = SimbadService()
-result = simbad.resolve("M31")
-
-vizier = VizierService()
-catalog = "I/345/gaia2"
-coord = SkyCoord.from_name("M31")
-vizier_result = vizier.query_region(catalog, coord, radius=5 * u.arcmin)
+    from cosmo import SimbadService, VizierService
+    from astropy import units as u
+    from astropy.coordinates import SkyCoord
+    
+    simbad = SimbadService()
+    result = simbad.resolve("M31")
+    
+    vizier = VizierService()
+    catalog = "I/345/gaia2"
+    coord = SkyCoord.from_name("M31")
+    vizier_result = vizier.query_region(catalog, coord, radius=5 * u.arcmin)
+    
 ```
 
 
-
-
----
 
 ## 🧪 Testing
 
@@ -93,7 +89,7 @@ vizier_result = vizier.query_region(catalog, coord, radius=5 * u.arcmin)
 - Validate error handling via mocked service failures.
 - Provide CLI tools or notebook demos using example coordinates like `"M31"`, `"NGC 253"`, etc.
 
----
+
 
 ## 📚 Requirements
 
@@ -101,13 +97,13 @@ vizier_result = vizier.query_region(catalog, coord, radius=5 * u.arcmin)
 - `astropy>=5.0`
 - Python 3.10 or higher
 
----
+
 
 ## 📜 License
 
 This project is licensed under the terms of the **MIT license**. See [LICENSE](LICENSE) for details.
 
----
+
 
 ## 🙌 Acknowledgments
 
