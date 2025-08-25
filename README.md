@@ -12,14 +12,14 @@
 
 **Cosmo** is a unified interface to major astronomical data services such as:
 
-- SIMBAD
-- VizieR
-- Gaia TAP+
-- IRSA & Dust Maps
-- SDSS
-- NED
-- MAST
-- CDS XMatch
+- [SIMBAD](https://simbad.cds.unistra.fr/simbad/)
+- [VizieR](https://vizier.cds.unistra.fr/vizier/surveys.htx)
+- [Gaia TAP+](https://gea.esac.esa.int/archive/)
+- [IRSA & Dust Maps](https://irsa.ipac.caltech.edu/applications/DUST/index.html)
+- [SDSS](https://www.sdss.org/)
+- [NED](https://www.ipac.caltech.edu/project/ned)
+- [MAST](https://archive.stsci.edu/)
+- [CDS XMatch](http://cdsxmatch.u-strasbg.fr/xmatch/doc/)
 
 
 
@@ -49,7 +49,7 @@ Install dependencies:
 ## 🧩 Included Services
 
     | Class              | Description                                                   |
-    |-------------------|---------------------------------------------------------------|
+    |--------------------|---------------------------------------------------------------|
     | `SimbadService`    | Resolves star/galaxy names to coordinates and metadata        |
     | `VizierService`    | Queries regional catalogs via VizieR                          |
     | `GaiaService`      | Executes ADQL queries against the ESA Gaia archive            |
