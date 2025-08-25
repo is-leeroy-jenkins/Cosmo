@@ -67,10 +67,9 @@ class SimbadService( ):
 	"""
 	
 	Purpose:
-		SIMBAD service wrapper for astronomical query_object resolution.
+		The SIMBAD astronomical database provides basic data, cross-identifications,
+		bibliography and measurements for astronomical objects outside the solar system.
 
-	Inherits:
-		Sol
 		
 	"""
 	timeout: Optional[ int ]
@@ -86,7 +85,7 @@ class SimbadService( ):
 		self.client = Simbad
 		self.client.TIMEOUT = 10
 
-	def resolve( self, name: str, extra_fields: Optional[ Iterable[ str ] ]=None ) -> Optional[
+	def query_object( self, name: str, extra_fields: Optional[ Iterable[ str ] ]=None ) -> Optional[
 		Table ]:
 		"""
 		
@@ -94,7 +93,7 @@ class SimbadService( ):
 				Resolves a single query_object name using the SIMBAD database.
 
 			Parameters:
-				name (str): The name of the astronomical query_object to resolve.
+				name (str): The name of the astronomical query_object to query_object.
 				extra_fields (Optional[Iterable[str]]): Extra fields to retrieve from SIMBAD.
 
 			Returns:
@@ -111,7 +110,7 @@ class SimbadService( ):
 			exception = Error( e )
 			exception.module = 'cosmo'
 			exception.cause = 'SimbadService'
-			exception.method = 'resolve'
+			exception.method = 'query_object'
 			error = ErrorDialog( exception )
 			error.show( )
 
@@ -144,11 +143,69 @@ class SimbadService( ):
 			error = ErrorDialog( exception )
 			error.show( )
 
+	def query_region( self, names: Iterable[ str ],
+	                  extra_fields: Optional[ Iterable[ str ] ] = None ) -> Optional[ Table ]:
+		"""
+
+			Purpose:
+				Resolves multiple query_object names using the SIMBAD service.
+
+			Parameters:
+				names (Iterable[str]): List of query_object names.
+				extra_fields (Optional[Iterable[str]]): Extra fields to include for each query_object.
+
+			Returns:
+				Optional[Table]: Table of resolved objects or None if failed.
+
+		"""
+		try:
+			throw_if( 'names', names )
+			if extra_fields:
+				for field in extra_fields:
+					self.client.add_votable_fields( field )
+			return self.client.query_region( names )
+		except Exception as e:
+			exception = Error( e )
+			exception.module = 'cosmo'
+			exception.cause = 'SimbadService'
+			exception.method = 'resolve_many'
+			error = ErrorDialog( exception )
+			error.show( )
+
+	def query_catalog( self, names: Iterable[ str ],
+	                  extra_fields: Optional[ Iterable[ str ] ] = None ) -> Optional[ Table ]:
+		"""
+
+			Purpose:
+				Resolves multiple query_object names using the SIMBAD service.
+
+			Parameters:
+				names (Iterable[str]): List of query_object names.
+				extra_fields (Optional[Iterable[str]]): Extra fields to include for each query_object.
+
+			Returns:
+				Optional[Table]: Table of resolved objects or None if failed.
+
+		"""
+		try:
+			throw_if( 'names', names )
+			if extra_fields:
+				for field in extra_fields:
+					self.client.add_votable_fields( field )
+			return self.client.query_catalog( names )
+		except Exception as e:
+			exception = Error( e )
+			exception.module = 'cosmo'
+			exception.cause = 'SimbadService'
+			exception.method = 'resolve_many'
+			error = ErrorDialog( exception )
+			error.show( )
+
 	def __str__( self ) -> str:
 		return 'SimbadService: SIMBAD query client wrapper'
 
 	def __dir__( self ) -> list[ str ]:
-		return [ 'resolve', 'resolve_many'  ]
+		return [ 'query_object', 'resolve_many'  ]
 
 
 

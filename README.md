@@ -72,7 +72,7 @@ Install dependencies:
     from astropy.coordinates import SkyCoord
     
     simbad = SimbadService()
-    result = simbad.resolve("M31")
+    result = simbad.query_object("M31")
     
     vizier = VizierService()
     catalog = "I/345/gaia2"
@@ -89,7 +89,7 @@ Install dependencies:
     from astropy.coordinates import SkyCoord
     
     simbad = SimbadService()
-    result = simbad.resolve("M31")
+    result = simbad.query_object("M31")
     coord = SkyCoord(result["RA"][0] + " " + result["DEC"][0], unit=("hourangle", "deg"))
     
     irsa = IrsaService()
