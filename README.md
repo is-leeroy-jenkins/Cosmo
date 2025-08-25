@@ -6,7 +6,7 @@
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)  
 [![Astroquery](https://img.shields.io/badge/Astroquery-✔︎-purple.svg)](https://astroquery.readthedocs.io/)
 
----
+
 
 ## ✨ Overview
 
@@ -22,7 +22,7 @@
 - CDS XMatch
 
 
----
+
 
 ## ⚙️ Installation
 
@@ -81,13 +81,97 @@ Install dependencies:
     
 ```
 
+### 1. 🌟 Resolve Object Name (SIMBAD) and Query Dust Map (IRSA)
+
+```
+
+from cosmo import SimbadService, IrsaService
+from astropy.coordinates import SkyCoord
+
+simbad = SimbadService()
+result = simbad.resolve("M31")
+coord = SkyCoord(result["RA"][0] + " " + result["DEC"][0], unit=("hourangle", "deg"))
+
+irsa = IrsaService()
+dust = irsa.ebv(coord)
+print(dust["ext SandF mean"].data[0])
+
+```
 
 
-## 🧪 Testing
 
-- Add unit tests for each service’s key method using `pytest` and `astropy`’s offline mode.
-- Validate error handling via mocked service failures.
-- Provide CLI tools or notebook demos using example coordinates like `"M31"`, `"NGC 253"`, etc.
+### 2. 📡 Query VizieR Catalog Around M31
+
+```
+
+python
+from cosmo import VizierService
+from astropy import units as u
+from astropy.coordinates import SkyCoord
+
+vizier = VizierService()
+center = SkyCoord.from_name("M31")
+table = vizier.query_region("I/345/gaia2", center, radius=10 * u.arcmin)
+print(table.colnames)
+
+```
+
+
+
+### 3. 💫 Crossmatch Two Star Tables (XMatch)
+
+```
+
+python
+from cosmo import XMatchService
+from astropy.table import Table
+import astropy.units as u
+
+# Local mock tables or previously queried results
+table1 = Table.read("stars1.vot", format="votable")
+table2 = Table.read("stars2.vot", format="votable")
+
+xmatch = XMatchService()
+matched = xmatch.match(table1, table2, max_distance=5 * u.arcsec)
+print(matched[:5])
+
+```
+
+
+
+### 4. 🛰️ Query and Download Hubble Data (MAST)
+
+```
+
+python
+from cosmo import MastService
+
+mast = MastService()
+obs = mast.query_object("M51")
+products = mast.download(obs, limit=3)
+print(products)
+
+```
+
+### 5. 🔭 Query Gaia Archive with ADQL
+
+```
+
+from cosmo import GaiaService
+
+gaia = GaiaService()
+query = """
+SELECT TOP 5 source_id, ra, dec, phot_g_mean_mag
+FROM gaiadr3.gaia_source
+WHERE CONTAINS(
+    POINT('ICRS', ra, dec),
+    CIRCLE('ICRS', 10.684, 41.269, 0.05)
+) = 1
+"""
+stars = gaia.query_adql(query)
+print(stars)
+
+```
 
 
 
