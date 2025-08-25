@@ -101,7 +101,7 @@ Install dependencies:
 
 ## 📜 License
 
-This project is licensed under the terms of the **MIT license**. See [LICENSE](LICENSE) for details.
+This project is licensed under the terms of the **MIT license**. See [LICENSE](https://github.com/is-leeroy-jenkins/Cosmo/blob/master/LICENSE.txt) for details.
 
 
 
