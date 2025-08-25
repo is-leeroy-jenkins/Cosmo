@@ -48,16 +48,16 @@ Install dependencies:
 
 ## 🧩 Included Services
 
-| Class              | Description                                                   |
-|-------------------|---------------------------------------------------------------|
-| `SimbadService`    | Resolves star/galaxy names to coordinates and metadata        |
-| `VizierService`    | Queries regional catalogs via VizieR                          |
-| `GaiaService`      | Executes ADQL queries against the ESA Gaia archive            |
-| `IrsaService`      | Accesses IRSA Dust maps and reddening (E(B–V)) values         |
-| `SdssService`      | Retrieves SDSS photometry and spectra near a target           |
-| `NedService`       | Queries NED for redshift and metadata on extragalactic objects|
-| `MastService`      | Searches the MAST archive and downloads mission products      |
-| `XMatchService`    | Crossmatches two sky catalogs using CDS XMatch                |
+    | Class              | Description                                                   |
+    |-------------------|---------------------------------------------------------------|
+    | `SimbadService`    | Resolves star/galaxy names to coordinates and metadata        |
+    | `VizierService`    | Queries regional catalogs via VizieR                          |
+    | `GaiaService`      | Executes ADQL queries against the ESA Gaia archive            |
+    | `IrsaService`      | Accesses IRSA Dust maps and reddening (E(B–V)) values         |
+    | `SdssService`      | Retrieves SDSS photometry and spectra near a target           |
+    | `NedService`       | Queries NED for redshift and metadata on extragalactic objects|
+    | `MastService`      | Searches the MAST archive and downloads mission products      |
+    | `XMatchService`    | Crossmatches two sky catalogs using CDS XMatch                |
 
 
 
@@ -85,16 +85,16 @@ Install dependencies:
 
 ```
 
-from cosmo import SimbadService, IrsaService
-from astropy.coordinates import SkyCoord
-
-simbad = SimbadService()
-result = simbad.resolve("M31")
-coord = SkyCoord(result["RA"][0] + " " + result["DEC"][0], unit=("hourangle", "deg"))
-
-irsa = IrsaService()
-dust = irsa.ebv(coord)
-print(dust["ext SandF mean"].data[0])
+    from cosmo import SimbadService, IrsaService
+    from astropy.coordinates import SkyCoord
+    
+    simbad = SimbadService()
+    result = simbad.resolve("M31")
+    coord = SkyCoord(result["RA"][0] + " " + result["DEC"][0], unit=("hourangle", "deg"))
+    
+    irsa = IrsaService()
+    dust = irsa.ebv(coord)
+    print(dust["ext SandF mean"].data[0])
 
 ```
 
@@ -104,15 +104,15 @@ print(dust["ext SandF mean"].data[0])
 
 ```
 
-python
-from cosmo import VizierService
-from astropy import units as u
-from astropy.coordinates import SkyCoord
-
-vizier = VizierService()
-center = SkyCoord.from_name("M31")
-table = vizier.query_region("I/345/gaia2", center, radius=10 * u.arcmin)
-print(table.colnames)
+    python
+    from cosmo import VizierService
+    from astropy import units as u
+    from astropy.coordinates import SkyCoord
+    
+    vizier = VizierService()
+    center = SkyCoord.from_name("M31")
+    table = vizier.query_region("I/345/gaia2", center, radius=10 * u.arcmin)
+    print(table.colnames)
 
 ```
 
@@ -122,18 +122,18 @@ print(table.colnames)
 
 ```
 
-python
-from cosmo import XMatchService
-from astropy.table import Table
-import astropy.units as u
-
-# Local mock tables or previously queried results
-table1 = Table.read("stars1.vot", format="votable")
-table2 = Table.read("stars2.vot", format="votable")
-
-xmatch = XMatchService()
-matched = xmatch.match(table1, table2, max_distance=5 * u.arcsec)
-print(matched[:5])
+    python
+    from cosmo import XMatchService
+    from astropy.table import Table
+    import astropy.units as u
+    
+    # Local mock tables or previously queried results
+    table1 = Table.read("stars1.vot", format="votable")
+    table2 = Table.read("stars2.vot", format="votable")
+    
+    xmatch = XMatchService()
+    matched = xmatch.match(table1, table2, max_distance=5 * u.arcsec)
+    print(matched[:5])
 
 ```
 
@@ -143,13 +143,13 @@ print(matched[:5])
 
 ```
 
-python
-from cosmo import MastService
-
-mast = MastService()
-obs = mast.query_object("M51")
-products = mast.download(obs, limit=3)
-print(products)
+    python
+    from cosmo import MastService
+    
+    mast = MastService()
+    obs = mast.query_object("M51")
+    products = mast.download(obs, limit=3)
+    print(products)
 
 ```
 
@@ -157,19 +157,19 @@ print(products)
 
 ```
 
-from cosmo import GaiaService
-
-gaia = GaiaService()
-query = """
-SELECT TOP 5 source_id, ra, dec, phot_g_mean_mag
-FROM gaiadr3.gaia_source
-WHERE CONTAINS(
-    POINT('ICRS', ra, dec),
-    CIRCLE('ICRS', 10.684, 41.269, 0.05)
-) = 1
-"""
-stars = gaia.query_adql(query)
-print(stars)
+    from cosmo import GaiaService
+    
+    gaia = GaiaService()
+    query = """
+    SELECT TOP 5 source_id, ra, dec, phot_g_mean_mag
+    FROM gaiadr3.gaia_source
+    WHERE CONTAINS(
+        POINT('ICRS', ra, dec),
+        CIRCLE('ICRS', 10.684, 41.269, 0.05)
+    ) = 1
+    """
+    stars = gaia.query_adql(query)
+    print(stars)
 
 ```
 
