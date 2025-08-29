@@ -145,7 +145,7 @@ Install dependencies:
 
 
 
-### 4. 🛰️ Query and Download Hubble Data (MAST)
+## 4. 🛰️ Query and Download Hubble Data (MAST)
 
 ```
 
@@ -159,7 +159,7 @@ Install dependencies:
 
 ```
 
-### 5. 🔭 Query Gaia Archive with ADQL
+## 5. 🔭 Query Gaia Archive with ADQL
 
 ```
 
