@@ -1,3 +1,8 @@
+###### cosmo
+~[]()
+
+
+
 # 🪐 Cosmo: Astronomy Query Toolkit
 
 > **Modular Python framework for querying online astronomical catalogs and surveys.**
@@ -31,7 +36,8 @@ Cosmo runs on `astroquery`, and `astropy`
 Install dependencies:
 
 ```
-> pip install astroquery astropy
+     pip install astroquery astropy
+     
 ```
 
 
@@ -63,7 +69,7 @@ Install dependencies:
 
 
 
-## 🔍 Example Usage
+## 🔍 Celestial Coordinates
 
 ```
 
@@ -81,7 +87,7 @@ Install dependencies:
     
 ```
 
-### 1. 🌟 Resolve Object Name (SIMBAD) and Query Dust Map (IRSA)
+## 1. 🌟 Resolve Object Name (SIMBAD) and Query Dust Map (IRSA)
 
 ```
 
@@ -100,7 +106,7 @@ Install dependencies:
 
 
 
-### 2. 📡 Query VizieR Catalog Around M31
+## 2. 📡 Query VizieR Catalog Around M31
 
 ```
 
@@ -118,7 +124,7 @@ Install dependencies:
 
 
 
-### 3. 💫 Crossmatch Two Star Tables (XMatch)
+## 3. 💫 Crossmatch Two Star Tables (XMatch)
 
 ```
 
