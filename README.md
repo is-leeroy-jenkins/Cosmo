@@ -1,5 +1,5 @@
 ###### cosmo
-~[]()
+![](https://github.com/is-leeroy-jenkins/Cosmo/blob/master/resources/image/git/project_cosmo.png)
 
 
 
