@@ -48,6 +48,7 @@ Install dependencies:
     cosmo.py                  # Main library (all services)
     boogr.py                  # Error + ErrorDialog definitions
     Python Style Example.py   # Enforced documentation and formatting standard
+    
 ```
 
 
