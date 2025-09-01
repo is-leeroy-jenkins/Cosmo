@@ -1,6 +1,6 @@
 ###### cosmo
-![](https://github.com/is-leeroy-jenkins/Cosmo/blob/master/resources/image/git/project_cosmo.png)
 
+<img src="https://github.com/is-leeroy-jenkins/Cosmo/blob/master/resources/image/git/galaxy.gif" style="width:950px;height:275px">
 
 
 # 🪐 Cosmo: Astronomy Query Toolkit
