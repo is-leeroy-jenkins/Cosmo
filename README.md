@@ -1,9 +1,8 @@
-###### cosmo
+# 🪐 Cosmo: Astronomy Query Toolkit
+
 
 <img src="https://github.com/is-leeroy-jenkins/Cosmo/blob/master/resources/image/git/galaxy.gif" style="width:950px;height:275px">
 
-
-# 🪐 Cosmo: Astronomy Query Toolkit
 
 > **Modular Python framework for querying online astronomical catalogs and surveys.**
 
