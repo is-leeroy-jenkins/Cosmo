@@ -67,7 +67,7 @@ class SimbadService( ):
 	"""
 	
 	Purpose:
-		The SIMBAD astronomical database provides basic data, cross-identifications,
+		The SIMBAD astronomical database provides basic stores, cross-identifications,
 		bibliography and measurements for astronomical objects outside the solar system.
 
 		
@@ -413,12 +413,12 @@ class SdssService( ):
 		"""
 		
 			Purpose:
-				Queries SDSS image or spectroscopy data for a given sky query_region.
+				Queries SDSS image or spectroscopy stores for a given sky query_region.
 
 			Parameters:
 				center (str | SkyCoord): Center of the query_region.
 				radius (u.Quantity): Angular search radius.
-				spectro (bool): If True, retrieves spectroscopy data.
+				spectro (bool): If True, retrieves spectroscopy stores.
 
 			Returns:
 				Optional[Table]: Table of objects or spectra or None.
@@ -501,7 +501,7 @@ class MastService( ):
 	"""
 	
 		Purpose:
-			MAST interface for mission-based archival searches and data downloads.
+			MAST interface for mission-based archival searches and stores downloads.
 	
 		Inherits:
 			Sol

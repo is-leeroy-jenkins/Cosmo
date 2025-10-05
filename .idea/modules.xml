@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/cosmo.iml" filepath="$PROJECT_DIR$/.idea/cosmo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Cosmo.iml" filepath="$PROJECT_DIR$/.idea/Cosmo.iml" />
     </modules>
   </component>
 </project>
