@@ -1,6 +1,7 @@
-astropy~=7.1.0rc1
-matplotlib~=3.10.3
-numpy~=1.26.4
-typing~=3.7.4.3
-astroquery~=0.4.10
-FreeSimpleGUI~=5.2.0.post1
+astropy
+matplotlib
+pandas
+seaborn
+typing
+astroquery
+FreeSimpleGUI
